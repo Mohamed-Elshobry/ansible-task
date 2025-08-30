@@ -1,0 +1,6 @@
+---
+# handlers file for task
+# handlers:
+    - name: Debug app status
+      debug:
+        msg: "App {{ app_name }} is running on port {{ port }}"

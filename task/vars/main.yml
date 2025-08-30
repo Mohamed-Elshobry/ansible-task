@@ -1,0 +1,5 @@
+---
+# vars file for task
+# vars:
+    app_name: "myapp"
+    port: 8080
