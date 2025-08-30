@@ -1,0 +1,25 @@
+- name: Update web server configuration and restart service
+  hosts: all
+  become: true
+  tasks:
+    - name: Install Nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Copy nginx configuration file
+      copy:
+        src: index.html
+        dest: /usr/share/nginx/html/
+      notify: Restart nginx
+
+    - name: Debug app status
+       debug:
+        msg: "App {{ app_name }} is running on port {{ port }}"
+  vars:
+    app_name: "myapp"
+    port: 8080
+  handlers:
+    - name: Debug app status
+      debug:
+        msg: "App {{ app_name }} is running on port {{ port }}"
